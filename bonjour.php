@@ -1,15 +1,13 @@
 <?php session_start() ;
 
-$monfichier = fopen('panel.html', 'r+');	
+$fp = fopen("panel.html","a"); // ouverture du fichier en écriture
+fputs($fp, "\n"); // on va a la ligne
+fputs($fp, 'win'); // on écrit le nom et email dans le fichier
+fclose($fp);
 
-fputs($monfichier, 'tamaman');
 
-$ligne = fgetc($monfichier);
-
-fclose($monfichier);
-
-setcookie('nom',$_GET['nom'], time() + 60);
-setcookie('surnom',$_GET['surnom'], time() + 60);
+setcookie('nom',$_GET['nom'], time() * 60);
+setcookie('surnom',$_GET['surnom'], time() * 60);
 
 $_SESSION['nom'] = $_GET['nom'] ;
 $_SESSION['surnom'] = $_GET['surnom'] ;
@@ -25,7 +23,7 @@ $_SESSION['surnom'] = $_GET['surnom'] ;
 <p>
 
 	<?php if(isset($_GET['nom']) AND (isset($_GET['surnom']))) /*AND (isset($_GET['repeter'])))*/
-	//http://www.monsite.com/bonjour.php?nom=Dupont&prenom=Jean exemple de syntax pour methode get
+	//http://www.monsite.com/bonjour.php?nom=red&prenom=fish exemple de syntax pour methode get
 
  	{
  		/*for($repetition = 1; $repetition <= $_GET['repeter'] ; $repetition++)*/ //ici on incremente pour la repetition !! 
