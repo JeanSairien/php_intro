@@ -1,5 +1,8 @@
 <?php session_start() ;
 
+setcookie('nom',$_GET['nom'], time() + 60);
+setcookie('surnom',$_GET['surnom'], time() + 60);
+
 $_SESSION['nom'] = $_GET['nom'] ;
 $_SESSION['surnom'] = $_GET['surnom'] ;
 
@@ -32,7 +35,8 @@ $_SESSION['surnom'] = $_GET['surnom'] ;
 
 </p>
 
-<h1><?php echo $_SESSION['nom'],$_SESSION['surnom'] ?></h1>
+<!--<h1><?php echo $_SESSION['nom'],$_SESSION['surnom'] ?></h1>-->
+<h2><?php echo $_COOKIE['nom'],$_COOKIE['surnom'] ?></h2>
 
 
 </body>
