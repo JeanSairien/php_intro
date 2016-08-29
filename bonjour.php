@@ -1,5 +1,13 @@
 <?php session_start() ;
 
+$monfichier = fopen('panel.html', 'r+');	
+
+fputs($monfichier, 'tamaman');
+
+$ligne = fgetc($monfichier);
+
+fclose($monfichier);
+
 setcookie('nom',$_GET['nom'], time() + 60);
 setcookie('surnom',$_GET['surnom'], time() + 60);
 
@@ -35,7 +43,7 @@ $_SESSION['surnom'] = $_GET['surnom'] ;
 
 </p>
 
-<!--<h1><?php echo $_SESSION['nom'],$_SESSION['surnom'] ?></h1>-->
+<h1><?php echo $_SESSION['nom'],$_SESSION['surnom'] ?></h1>
 <h2><?php echo $_COOKIE['nom'],$_COOKIE['surnom'] ?></h2>
 
 
