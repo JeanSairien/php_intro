@@ -1,15 +1,38 @@
 <?php session_start() ;
 
-$monfichier = fopen('panel.html', 'r+');	
+/*$monfichier = fopen('panel.html', 'a+');	
 
-fputs($monfichier, 'tamaman');
-
-$ligne = fgetc($monfichier);
 
 fclose($monfichier);
 
 setcookie('nom',$_GET['nom'], time() + 60);
-setcookie('surnom',$_GET['surnom'], time() + 60);
+setcookie('surnom',$_GET['surnom'], time() + 60);*/
+
+$monfichier = fopen('panel.html', 'r+');
+
+ 
+
+$pages_vues = fgets($monfichier); // On lit la première ligne (nombre de pages vues)
+
+$pages_vues += 1; // On augmente de 1 ce nombre de pages vues
+
+fseek($monfichier, 0); // On remet le curseur au début du fichier
+
+fputs($monfichier, $pages_vues); // On écrit le nouveau nombre de pages vues
+
+fputs($monfichier, ' ici ce trouve '.$_GET['nom']);
+
+
+fputs($monfichier, $_GET['surnom']);
+
+
+ 
+
+fclose($monfichier);
+
+ 
+
+echo '<p>Cette page a été vue ' . $pages_vues . ' fois !</p>';
 
 $_SESSION['nom'] = $_GET['nom'] ;
 $_SESSION['surnom'] = $_GET['surnom'] ;
